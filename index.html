@@ -8,107 +8,112 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/6.7.0/ethers.umd.min.js"></script>
 </head>
-<body class="bg-slate-900 text-slate-100 font-sans relative min-h-screen">
+<body class="bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-slate-100 font-sans relative min-h-screen">
 
-    <!-- NAVİGASYON -->
-    <nav class="flex justify-between items-center px-6 py-4 border-b border-slate-800 bg-slate-950/80 backdrop-blur fixed w-full top-0 z-40">
+    <!-- NAVİGASYON (ALTIN ÇİZGİLİ SÜSLEMELİ) -->
+    <nav class="flex justify-between items-center px-6 py-4 border-b border-amber-500/20 bg-slate-950/90 backdrop-blur fixed w-full top-0 z-40 shadow-lg shadow-amber-500/5">
         <div class="flex items-center gap-3">
-            <div class="bg-emerald-500 text-slate-950 px-3 py-1.5 rounded-lg font-black text-xl tracking-wider shadow-lg shadow-emerald-500/20">RHG</div>
-            <span class="text-xl font-bold tracking-tight text-white">Robin Hood Global</span>
+            <div class="bg-gradient-to-r from-amber-500 to-yellow-400 text-slate-950 px-3 py-1.5 rounded-lg font-black text-xl tracking-wider shadow-lg shadow-amber-500/30">RHG</div>
+            <span class="text-xl font-bold tracking-tight text-white">Robin Hood <span class="text-gradient bg-gradient-to-r from-amber-400 to-yellow-300 bg-clip-text text-transparent">Global</span></span>
         </div>
         
         <div class="flex items-center gap-4">
-            <button id="connectWalletBtn" onclick="connectWallet()" class="bg-emerald-400 hover:bg-emerald-500 text-slate-950 font-bold px-5 py-2.5 rounded-xl transition-all duration-300 flex items-center gap-2 cursor-pointer shadow-md">
+            <button id="connectWalletBtn" onclick="connectWallet()" class="bg-gradient-to-r from-amber-500 to-yellow-400 hover:from-amber-600 hover:to-yellow-500 text-slate-950 font-bold px-5 py-2.5 rounded-xl transition-all duration-300 flex items-center gap-2 cursor-pointer shadow-md shadow-amber-500/10">
                 <i class="fa-solid fa-wallet"></i>
                 <span id="walletBtnText">Connect Wallet</span>
             </button>
         </div>
     </nav>
 
-    <!-- ANA İÇERİK (ASIL VİZYON: ÜRETİM VE KÜRESEL ZENGİNLİK) -->
-    <main class="pt-32 pb-20 px-4 max-w-6xl mx-auto">
-        <div class="text-center mb-12">
-            <div class="inline-flex items-center gap-2 bg-emerald-500/10 text-emerald-400 px-4 py-1.5 rounded-full text-sm font-semibold mb-6 border border-emerald-500/20">
-                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                Decentralized Production & Manufacturing Ecosystem
+    <!-- ANA İÇERİK (GÜÇLÜ VE ZENGİN VİZYON) -->
+    <main class="pt-36 pb-20 px-4 max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+            <div class="inline-flex items-center gap-2 bg-amber-500/10 text-amber-400 px-4 py-1.5 rounded-full text-sm font-semibold mb-6 border border-amber-500/30">
+                <i class="fa-solid fa-crown text-xs text-yellow-400"></i>
+                Decentralized Production & Manufacturing Power
             </div>
-            <h1 class="text-4xl md:text-5xl font-black mb-4 tracking-tight leading-tight">
-                Empower Local Production, <br>Share Global Wealth
+            <h1 class="text-4xl md:text-6xl font-black mb-6 tracking-tight leading-none text-white">
+                Empower Local Production, <br>
+                <span class="bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-500 bg-clip-text text-transparent">Share Global Wealth</span>
             </h1>
-            <p class="text-slate-400 max-w-2xl mx-auto text-base">
-                Join the world's first decentralized ecosystem that scales real-world manufacturing industries through smart contracts and transparent blockchain ledger tracking.
+            <p class="text-slate-400 max-w-2xl mx-auto text-base md:text-lg">
+                Join the world's premier decentralized ecosystem that scales real-world manufacturing industries through smart contracts and transparent blockchain ledger tracking.
             </p>
         </div>
 
         <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto items-stretch">
             
-            <!-- SOL PANEL: KATILIM VE BAĞIŞ SEÇENEKLERİ -->
-            <div class="bg-slate-950 border border-slate-800 p-8 rounded-3xl shadow-2xl flex flex-col justify-between">
+            <!-- SOL PANEL: YATIRIM GİRİŞİ VE SOSYAL SEÇENEKLER -->
+            <div class="bg-slate-900/60 border border-amber-500/10 p-8 rounded-3xl shadow-2xl backdrop-blur-md flex flex-col justify-between relative overflow-hidden group hover:border-amber-500/20 transition-all duration-500">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-amber-500/5 rounded-full blur-2xl"></div>
+                
                 <div>
-                    <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
-                        <i class="fa-solid fa-circle-dollar-to-slot text-emerald-400"></i> Platform Participation
+                    <h3 class="text-xl font-bold mb-6 flex items-center gap-2 text-amber-400">
+                        <i class="fa-solid fa-gem"></i> Platform Participation
                     </h3>
                     
                     <div class="mb-6 text-left">
                         <label class="block text-sm text-slate-400 font-medium mb-2">Amount to Fund Industrial Production</label>
                         <div class="relative">
-                            <input type="number" id="fundAmount" value="1000" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-lg font-bold text-slate-100 focus:outline-none focus:border-emerald-500 transition-colors">
-                            <span class="absolute right-4 top-3.5 font-bold text-slate-400">USDT</span>
+                            <input type="number" id="fundAmount" value="1000" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-lg font-bold text-slate-100 focus:outline-none focus:border-amber-500 transition-colors">
+                            <span class="absolute right-4 top-3.5 font-bold text-amber-400 tracking-wider">USDT</span>
                         </div>
                     </div>
 
-                    <!-- 🕊️ SOSYAL SORUMLULUK VE BAĞIŞ SEÇENEKLERİ (YER KAPLAMAYAN ŞIK ALAN) -->
-                    <div class="border-t border-slate-800/80 pt-4 mt-2 space-y-3">
-                        <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider block mb-1">Optional Solidarity Support</span>
+                    <!-- 🕊️ SOSYAL SORUMLULUK (ZARİF ONAY KUTULARI) -->
+                    <div class="border-t border-slate-800 pt-4 mt-2 space-y-3">
+                        <span class="text-xs font-semibold text-amber-500/70 uppercase tracking-wider block mb-1">Optional Solidarity Support</span>
                         
                         <!-- 1. Engelli Bireyler -->
-                        <label class="flex items-start gap-3 bg-slate-900/40 hover:bg-slate-900 border border-slate-800/60 p-3 rounded-xl cursor-pointer transition-colors">
-                            <input type="checkbox" class="mt-1 accent-emerald-400 rounded">
+                        <label class="flex items-start gap-3 bg-slate-950/40 hover:bg-slate-950 border border-slate-800/60 p-3 rounded-xl cursor-pointer transition-colors">
+                            <input type="checkbox" class="mt-1 accent-amber-500 rounded">
                             <span class="text-xs text-slate-300 leading-relaxed">Engelli bireylerimizin hayatını kolaylaştıracak projelere ve rehabilitasyon süreçlerine destek bağış yapmak ister misiniz?</span>
                         </label>
 
                         <!-- 2. Sokak Hayvanları -->
-                        <label class="flex items-start gap-3 bg-slate-900/40 hover:bg-slate-900 border border-slate-800/60 p-3 rounded-xl cursor-pointer transition-colors">
-                            <input type="checkbox" class="mt-1 accent-emerald-400 rounded">
+                        <label class="flex items-start gap-3 bg-slate-950/40 hover:bg-slate-950 border border-slate-800/60 p-3 rounded-xl cursor-pointer transition-colors">
+                            <input type="checkbox" class="mt-1 accent-amber-500 rounded">
                             <span class="text-xs text-slate-300 leading-relaxed">Sokaktaki canlarımız için sürdürülebilir barınak, mama ve tedavi fonuna destek bağış yapmak ister misiniz?</span>
                         </label>
 
                         <!-- 3. Eğitim -->
-                        <label class="flex items-start gap-3 bg-slate-900/40 hover:bg-slate-900 border border-slate-800/60 p-3 rounded-xl cursor-pointer transition-colors">
-                            <input type="checkbox" class="mt-1 accent-emerald-400 rounded">
+                        <label class="flex items-start gap-3 bg-slate-950/40 hover:bg-slate-950 border border-slate-800/60 p-3 rounded-xl cursor-pointer transition-colors">
+                            <input type="checkbox" class="mt-1 accent-amber-500 rounded">
                             <span class="text-xs text-slate-300 leading-relaxed">İmkanı kısıtlı ama başarılı öğrencilerin yazılım ve teknoloji burslarına destek bağış yapmak ister misiniz?</span>
                         </label>
 
                         <!-- 4. Afet Dayanışması -->
-                        <label class="flex items-start gap-3 bg-slate-900/40 hover:bg-slate-900 border border-slate-800/60 p-3 rounded-xl cursor-pointer transition-colors">
-                            <input type="checkbox" class="mt-1 accent-emerald-400 rounded">
+                        <label class="flex items-start gap-3 bg-slate-950/40 hover:bg-slate-950 border border-slate-800/60 p-3 rounded-xl cursor-pointer transition-colors">
+                            <input type="checkbox" class="mt-1 accent-amber-500 rounded">
                             <span class="text-xs text-slate-300 leading-relaxed">Olası afet bölgeleri ve ihtiyaç sahibi topluluklar için oluşturulan acil dayanışma fonuna destek bağış yapmak ister misiniz?</span>
                         </label>
                     </div>
                 </div>
 
                 <div class="mt-6">
-                    <button onclick="openPaymentModal()" class="w-full bg-gradient-to-r from-emerald-400 to-teal-500 hover:from-emerald-500 hover:to-teal-600 text-slate-950 font-extrabold py-4 rounded-xl transition-all active:scale-[0.98] cursor-pointer text-center tracking-wide shadow-lg mb-2 flex justify-center items-center gap-2">
+                    <button onclick="openPaymentModal()" class="w-full bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-500 hover:from-amber-600 hover:to-yellow-500 text-slate-950 font-black py-4 rounded-xl transition-all active:scale-[0.98] cursor-pointer text-center tracking-wide shadow-lg shadow-amber-500/10 mb-2 flex justify-center items-center gap-2 text-base">
                         <i class="fa-solid fa-credit-card"></i> Join via Credit Card / Web3
                     </button>
                     <p class="text-xs text-slate-500 text-center">Safe & Encrypted Web3 Bridge Integration</p>
                 </div>
             </div>
 
-            <!-- SAĞ PANEL: CANLI YATIRIMCI PANELİ (DASHBOARD) -->
-            <div class="bg-slate-950 border border-slate-800 p-8 rounded-3xl shadow-2xl flex flex-col justify-between">
+            <!-- SAĞ PANEL: DASHBOARD PANELİ -->
+            <div class="bg-slate-900/60 border border-amber-500/10 p-8 rounded-3xl shadow-2xl backdrop-blur-md flex flex-col justify-between relative overflow-hidden group hover:border-amber-500/20 transition-all duration-500">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-yellow-500/5 rounded-full blur-2xl"></div>
+                
                 <div>
-                    <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
-                        <i class="fa-solid fa-chart-pie text-cyan-400"></i> Your Share Assets
+                    <h3 class="text-xl font-bold mb-6 flex items-center gap-2 text-yellow-400">
+                        <i class="fa-solid fa-chart-pie"></i> Your Share Assets
                     </h3>
                     
-                    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 text-center mb-6">
+                    <div class="bg-slate-950 border border-slate-800 rounded-2xl p-6 text-center mb-6">
                         <span class="text-sm text-slate-400 block mb-1">Robin Hood Global Balance</span>
-                        <div id="tokenBalance" class="text-2xl font-black text-slate-500">Disconnected</div>
+                        <div id="tokenBalance" class="text-3xl font-black text-slate-500 tracking-tight">Disconnected</div>
                     </div>
                 </div>
 
-                <div class="text-sm text-slate-400 bg-slate-900/50 p-4 rounded-xl border border-slate-800/80">
+                <div class="text-sm text-slate-400 bg-slate-950 p-4 rounded-xl border border-slate-800">
                     <div class="flex justify-between items-center">
                         <span>Status:</span>
                         <span id="connectionStatus" class="text-rose-400 font-bold flex items-center gap-1.5">
@@ -120,15 +125,15 @@
         </div>
     </main>
 
-    <!-- 💳 KREDI KARTI ÖDEME EKRANI (MODAL) -->
-    <div id="paymentModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center hidden opacity-0 transition-opacity duration-300">
-        <div class="bg-slate-950 border border-slate-800 w-full max-w-md p-8 rounded-3xl shadow-2xl relative m-4">
-            <button onclick="closePaymentModal()" class="absolute top-4 right-4 text-slate-500 hover:text-white text-xl cursor-pointer">
+    <!-- 💳 KREDI KARTI ÖDEME EKRANI (ALTIN DOKUNUŞLU MODAL) -->
+    <div id="paymentModal" class="fixed inset-0 bg-black/85 backdrop-blur-sm z-50 flex items-center justify-center hidden opacity-0 transition-opacity duration-300">
+        <div class="bg-slate-900 border border-amber-500/20 w-full max-w-md p-8 rounded-3xl shadow-2xl relative m-4 shadow-amber-500/5">
+            <button onclick="closePaymentModal()" class="absolute top-4 right-4 text-slate-500 hover:text-white text-xl cursor-pointer transition-colors">
                 <i class="fa-solid fa-xmark"></i>
             </button>
 
             <div class="text-center mb-6">
-                <div class="w-12 h-12 bg-emerald-500/10 text-emerald-400 rounded-full flex items-center justify-center mx-auto mb-3 border border-emerald-500/20">
+                <div class="w-12 h-12 bg-amber-500/10 text-amber-400 rounded-full flex items-center justify-center mx-auto mb-3 border border-amber-500/20">
                     <i class="fa-solid fa-shield-halved text-xl"></i>
                 </div>
                 <h3 class="text-xl font-bold text-white">Secure Fiat-to-Web3 Gateway</h3>
@@ -139,32 +144,32 @@
             <div class="space-y-4">
                 <div>
                     <label class="block text-xs text-slate-400 font-semibold uppercase tracking-wider mb-1.5">Cardholder Name</label>
-                    <input type="text" placeholder="John Doe" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm text-slate-100 focus:outline-none focus:border-emerald-500">
+                    <input type="text" placeholder="John Doe" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-100 focus:outline-none focus:border-amber-500">
                 </div>
                 <div>
                     <label class="block text-xs text-slate-400 font-semibold uppercase tracking-wider mb-1.5">Card Number</label>
                     <div class="relative">
-                        <input type="text" placeholder="•••• •••• •••• ••••" class="w-full bg-slate-900 border border-slate-700 rounded-xl pl-4 pr-12 py-3 text-sm text-slate-100 focus:outline-none focus:border-emerald-500 tracking-widest">
-                        <i class="fa-solid fa-cc-visa absolute right-4 top-3.5 text-slate-400 text-lg"></i>
+                        <input type="text" placeholder="•••• •••• •••• ••••" class="w-full bg-slate-950 border border-slate-800 rounded-xl pl-4 pr-12 py-3 text-sm text-slate-100 focus:outline-none focus:border-amber-500 tracking-widest">
+                        <i class="fa-solid fa-cc-visa absolute right-4 top-3.5 text-slate-500 text-lg"></i>
                     </div>
                 </div>
                 <div class="grid grid-cols-2 gap-4">
                     <div>
                         <label class="block text-xs text-slate-400 font-semibold uppercase tracking-wider mb-1.5">Expiry Date</label>
-                        <input type="text" placeholder="MM / YY" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm text-slate-100 focus:outline-none focus:border-emerald-500 text-center">
+                        <input type="text" placeholder="MM / YY" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-100 focus:outline-none focus:border-amber-500 text-center">
                     </div>
                     <div>
                         <label class="block text-xs text-slate-400 font-semibold uppercase tracking-wider mb-1.5">CVC / CVV</label>
-                        <input type="text" placeholder="•••" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm text-slate-100 focus:outline-none focus:border-emerald-500 text-center tracking-widest">
+                        <input type="text" placeholder="•••" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-100 focus:outline-none focus:border-amber-500 text-center tracking-widest">
                     </div>
                 </div>
 
-                <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-4 flex justify-between items-center text-sm font-semibold text-slate-300">
+                <div class="bg-slate-950 border border-slate-800 rounded-xl p-4 flex justify-between items-center text-sm font-semibold text-slate-300">
                     <span>Total Charge:</span>
-                    <span class="text-emerald-400 font-bold text-base" id="modalChargeAmount">1,000.00 USDT</span>
+                    <span class="text-amber-400 font-bold text-base" id="modalChargeAmount">1,000.00 USDT</span>
                 </div>
 
-                <button onclick="processPayment()" class="w-full bg-emerald-400 hover:bg-emerald-500 text-slate-950 font-black py-4 rounded-xl transition-all shadow-lg flex justify-center items-center gap-2 cursor-pointer mt-2">
+                <button onclick="processPayment()" class="w-full bg-gradient-to-r from-amber-500 to-yellow-400 hover:from-amber-600 hover:to-yellow-500 text-slate-950 font-black py-4 rounded-xl transition-all shadow-lg shadow-amber-500/5 flex justify-center items-center gap-2 cursor-pointer mt-2 text-base">
                     <i class="fa-solid fa-lock text-sm"></i> Pay & Mint Tokens
                 </button>
             </div>
@@ -191,9 +196,9 @@
                     
                     document.getElementById('walletBtnText').innerText = walletAddress.substring(0,6) + "..." + walletAddress.substring(walletAddress.length - 4);
                     
-                    document.getElementById('connectionStatus').innerHTML = `<span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> Connected`;
+                    document.getElementById('connectionStatus').innerHTML = `<span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span> Connected`;
                     document.getElementById('connectionStatus').classList.remove('text-rose-400');
-                    document.getElementById('connectionStatus').classList.add('text-emerald-400');
+                    document.getElementById('connectionStatus').classList.add('text-amber-400');
 
                     provider = new ethers.BrowserProvider(window.ethereum);
                     signer = await provider.getSigner();
@@ -217,7 +222,7 @@
                 const balanceEl = document.getElementById('tokenBalance');
                 balanceEl.innerText = parseFloat(balanceHuman).toLocaleString('en-US') + " " + symbol;
                 balanceEl.classList.remove('text-slate-500');
-                balanceEl.classList.add('text-emerald-400');
+                balanceEl.classList.add('text-amber-400');
             } catch (err) {
                 console.error("Blokzincir okuma hatası:", err);
             }
