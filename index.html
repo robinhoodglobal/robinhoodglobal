@@ -25,36 +25,69 @@
         </div>
     </nav>
 
-    <!-- ANA İÇERİK -->
+    <!-- ANA İÇERİK (ASIL VİZYON: ÜRETİM VE KÜRESEL ZENGİNLİK) -->
     <main class="pt-32 pb-20 px-4 max-w-6xl mx-auto">
         <div class="text-center mb-12">
             <div class="inline-flex items-center gap-2 bg-emerald-500/10 text-emerald-400 px-4 py-1.5 rounded-full text-sm font-semibold mb-6 border border-emerald-500/20">
                 <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                The Future of Global Solidarity & Production
+                Decentralized Production & Manufacturing Ecosystem
             </div>
-            <h1 class="text-4xl md:text-5xl font-black mb-4 tracking-tight">Investor Control Center</h1>
-            <p class="text-slate-400 max-w-xl mx-auto">Manage your dynamic assets and track your funding records in real-time.</p>
+            <h1 class="text-4xl md:text-5xl font-black mb-4 tracking-tight leading-tight">
+                Empower Local Production, <br>Share Global Wealth
+            </h1>
+            <p class="text-slate-400 max-w-2xl mx-auto text-base">
+                Join the world's first decentralized ecosystem that scales real-world manufacturing industries through smart contracts and transparent blockchain ledger tracking.
+            </p>
         </div>
 
         <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto items-stretch">
             
-            <!-- SOL PANEL: KATILIM PANELİ -->
+            <!-- SOL PANEL: KATILIM VE BAĞIŞ SEÇENEKLERİ -->
             <div class="bg-slate-950 border border-slate-800 p-8 rounded-3xl shadow-2xl flex flex-col justify-between">
                 <div>
                     <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
-                        <i class="fa-solid fa-circle-dollar-to-slot text-emerald-400"></i> Participate in Platform
+                        <i class="fa-solid fa-circle-dollar-to-slot text-emerald-400"></i> Platform Participation
                     </h3>
                     
                     <div class="mb-6 text-left">
-                        <label class="block text-sm text-slate-400 font-medium mb-2">Amount to Fund (USD / EUR)</label>
+                        <label class="block text-sm text-slate-400 font-medium mb-2">Amount to Fund Industrial Production</label>
                         <div class="relative">
                             <input type="number" id="fundAmount" value="1000" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-lg font-bold text-slate-100 focus:outline-none focus:border-emerald-500 transition-colors">
                             <span class="absolute right-4 top-3.5 font-bold text-slate-400">USDT</span>
                         </div>
                     </div>
+
+                    <!-- 🕊️ SOSYAL SORUMLULUK VE BAĞIŞ SEÇENEKLERİ (YER KAPLAMAYAN ŞIK ALAN) -->
+                    <div class="border-t border-slate-800/80 pt-4 mt-2 space-y-3">
+                        <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider block mb-1">Optional Solidarity Support</span>
+                        
+                        <!-- 1. Engelli Bireyler -->
+                        <label class="flex items-start gap-3 bg-slate-900/40 hover:bg-slate-900 border border-slate-800/60 p-3 rounded-xl cursor-pointer transition-colors">
+                            <input type="checkbox" class="mt-1 accent-emerald-400 rounded">
+                            <span class="text-xs text-slate-300 leading-relaxed">Engelli bireylerimizin hayatını kolaylaştıracak projelere ve rehabilitasyon süreçlerine destek bağış yapmak ister misiniz?</span>
+                        </label>
+
+                        <!-- 2. Sokak Hayvanları -->
+                        <label class="flex items-start gap-3 bg-slate-900/40 hover:bg-slate-900 border border-slate-800/60 p-3 rounded-xl cursor-pointer transition-colors">
+                            <input type="checkbox" class="mt-1 accent-emerald-400 rounded">
+                            <span class="text-xs text-slate-300 leading-relaxed">Sokaktaki canlarımız için sürdürülebilir barınak, mama ve tedavi fonuna destek bağış yapmak ister misiniz?</span>
+                        </label>
+
+                        <!-- 3. Eğitim -->
+                        <label class="flex items-start gap-3 bg-slate-900/40 hover:bg-slate-900 border border-slate-800/60 p-3 rounded-xl cursor-pointer transition-colors">
+                            <input type="checkbox" class="mt-1 accent-emerald-400 rounded">
+                            <span class="text-xs text-slate-300 leading-relaxed">İmkanı kısıtlı ama başarılı öğrencilerin yazılım ve teknoloji burslarına destek bağış yapmak ister misiniz?</span>
+                        </label>
+
+                        <!-- 4. Afet Dayanışması -->
+                        <label class="flex items-start gap-3 bg-slate-900/40 hover:bg-slate-900 border border-slate-800/60 p-3 rounded-xl cursor-pointer transition-colors">
+                            <input type="checkbox" class="mt-1 accent-emerald-400 rounded">
+                            <span class="text-xs text-slate-300 leading-relaxed">Olası afet bölgeleri ve ihtiyaç sahibi topluluklar için oluşturulan acil dayanışma fonuna destek bağış yapmak ister misiniz?</span>
+                        </label>
+                    </div>
                 </div>
 
-                <div>
+                <div class="mt-6">
                     <button onclick="openPaymentModal()" class="w-full bg-gradient-to-r from-emerald-400 to-teal-500 hover:from-emerald-500 hover:to-teal-600 text-slate-950 font-extrabold py-4 rounded-xl transition-all active:scale-[0.98] cursor-pointer text-center tracking-wide shadow-lg mb-2 flex justify-center items-center gap-2">
                         <i class="fa-solid fa-credit-card"></i> Join via Credit Card / Web3
                     </button>
@@ -87,7 +120,7 @@
         </div>
     </main>
 
-    <!-- 💳 KREDI KARTI ÖDEME EKRANI (MODAL) - BAŞINA <div EKLENDİ -->
+    <!-- 💳 KREDI KARTI ÖDEME EKRANI (MODAL) -->
     <div id="paymentModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center hidden opacity-0 transition-opacity duration-300">
         <div class="bg-slate-950 border border-slate-800 w-full max-w-md p-8 rounded-3xl shadow-2xl relative m-4">
             <button onclick="closePaymentModal()" class="absolute top-4 right-4 text-slate-500 hover:text-white text-xl cursor-pointer">
@@ -206,7 +239,7 @@
         }
 
         function processPayment() {
-            alert("Ödemeniz 3D Secure güvencesiyle başarıyla alındı! Arka planda akıllı sözleşmeniz tetikleniyor ve tokenlarınız cüzdanınıza transfer ediliyor.");
+            alert("Ödemeniz 3D Secure güvencesiyle başarıyla alındı! Seçtiğiniz dayanışma bağışları fona aktarıldı, akıllı sözleşmeniz tetiklendi ve RHG tokenlarınız cüzdanınıza transfer ediliyor.");
             closePaymentModal();
         }
     </script>
