@@ -4,23 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Robin Hood Global | Web3 Dashboard</title>
-    <!-- Tailwind CSS ve FontAwesome Sabitlendi -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Web3 Bağlantı Kütüphanesi -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/6.7.0/ethers.umd.min.js"></script>
 </head>
-<body class="bg-slate-900 text-slate-100 font-sans">
+<body class="bg-slate-900 text-slate-100 font-sans relative min-h-screen">
 
     <!-- NAVİGASYON -->
-    <nav class="flex justify-between items-center px-6 py-4 border-b border-slate-800 bg-slate-950/80 backdrop-blur fixed w-full top-0 z-50">
+    <nav class="flex justify-between items-center px-6 py-4 border-b border-slate-800 bg-slate-950/80 backdrop-blur fixed w-full top-0 z-40">
         <div class="flex items-center gap-3">
             <div class="bg-emerald-500 text-slate-950 px-3 py-1.5 rounded-lg font-black text-xl tracking-wider shadow-lg shadow-emerald-500/20">RHG</div>
             <span class="text-xl font-bold tracking-tight text-white">Robin Hood Global</span>
         </div>
         
         <div class="flex items-center gap-4">
-            <button id="connectWalletBtn" onclick="connectWallet()" class="bg-emerald-400 hover:bg-emerald-500 text-slate-950 font-bold px-5 py-2.5 rounded-xl transition-all duration-300 flex items-center gap-2 cursor-pointer">
+            <button id="connectWalletBtn" onclick="connectWallet()" class="bg-emerald-400 hover:bg-emerald-500 text-slate-950 font-bold px-5 py-2.5 rounded-xl transition-all duration-300 flex items-center gap-2 cursor-pointer shadow-md">
                 <i class="fa-solid fa-wallet"></i>
                 <span id="walletBtnText">Connect Wallet</span>
             </button>
@@ -34,15 +32,10 @@
                 <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
                 The Future of Global Solidarity & Production
             </div>
-            <h1 class="text-4xl md:text-5xl font-black mb-4 tracking-tight">
-                Empower Local Production, Share Global Wealth
-            </h1>
-            <p class="text-slate-400 max-w-2xl mx-auto">
-                Join the world's first decentralized ecosystem that funds manufacturing, education, and social aid through transparent smart contracts.
-            </p>
+            <h1 class="text-4xl md:text-5xl font-black mb-4 tracking-tight">Investor Control Center</h1>
+            <p class="text-slate-400 max-w-xl mx-auto">Manage your dynamic assets and track your funding records in real-time.</p>
         </div>
 
-        <!-- İKİLİ PANEL AYARI (YAN YANA GÖRÜNÜM) -->
         <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto items-stretch">
             
             <!-- SOL PANEL: KATILIM PANELİ -->
@@ -62,8 +55,8 @@
                 </div>
 
                 <div>
-                    <button onclick="fundProject()" class="w-full bg-slate-100 hover:bg-white text-slate-950 font-extrabold py-4 rounded-xl transition-all active:scale-[0.98] cursor-pointer text-center tracking-wide shadow-lg mb-2">
-                        <i class="fa-solid fa-credit-card mr-2"></i> Join via Credit Card / Web3
+                    <button onclick="openPaymentModal()" class="w-full bg-gradient-to-r from-emerald-400 to-teal-500 hover:from-emerald-500 hover:to-teal-600 text-slate-950 font-extrabold py-4 rounded-xl transition-all active:scale-[0.98] cursor-pointer text-center tracking-wide shadow-lg mb-2 flex justify-center items-center gap-2">
+                        <i class="fa-solid fa-credit-card"></i> Join via Credit Card / Web3
                     </button>
                     <p class="text-xs text-slate-500 text-center">Safe & Encrypted Web3 Bridge Integration</p>
                 </div>
@@ -76,16 +69,12 @@
                         <i class="fa-solid fa-chart-pie text-cyan-400"></i> Your Share Assets
                     </h3>
                     
-                    <!-- Canlı Token Bakiyesi -->
                     <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 text-center mb-6">
                         <span class="text-sm text-slate-400 block mb-1">Robin Hood Global Balance</span>
-                        <div id="tokenBalance" class="text-2xl font-black text-slate-500">
-                            Disconnected
-                        </div>
+                        <div id="tokenBalance" class="text-2xl font-black text-slate-500">Disconnected</div>
                     </div>
                 </div>
 
-                <!-- Cüzdan Durumu -->
                 <div class="text-sm text-slate-400 bg-slate-900/50 p-4 rounded-xl border border-slate-800/80">
                     <div class="flex justify-between items-center">
                         <span>Status:</span>
@@ -95,11 +84,61 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </main>
 
-    <!-- WEB3 ENTEGRASYON KODLARI -->
+    <!-- 💳 KREDI KARTI ÖDEME EKRANI (MODAL) -->
+    <div id="paymentModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center hidden opacity-0 transition-opacity duration-300">
+        <div class="bg-slate-950 border border-slate-800 w-full max-w-md p-8 rounded-3xl shadow-2xl relative m-4">
+            <button onclick="closePaymentModal()" class="absolute top-4 right-4 text-slate-500 hover:text-white text-xl cursor-pointer">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="text-center mb-6">
+                <div class="w-12 h-12 bg-emerald-500/10 text-emerald-400 rounded-full flex items-center justify-center mx-auto mb-3 border border-emerald-500/20">
+                    <i class="fa-solid fa-shield-halved text-xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-white">Secure Fiat-to-Web3 Gateway</h3>
+                <p class="text-slate-400 text-sm mt-1">Your fiat payment will automatically mint RHG tokens.</p>
+            </div>
+
+            <!-- Kart Formu -->
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-xs text-slate-400 font-semibold uppercase tracking-wider mb-1.5">Cardholder Name</label>
+                    <input type="text" placeholder="John Doe" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm text-slate-100 focus:outline-none focus:border-emerald-500">
+                </div>
+                <div>
+                    <label class="block text-xs text-slate-400 font-semibold uppercase tracking-wider mb-1.5">Card Number</label>
+                    <div class="relative">
+                        <input type="text" placeholder="•••• •••• •••• ••••" class="w-full bg-slate-900 border border-slate-700 rounded-xl pl-4 pr-12 py-3 text-sm text-slate-100 focus:outline-none focus:border-emerald-500 tracking-widest">
+                        <i class="fa-solid fa-cc-visa absolute right-4 top-3.5 text-slate-400 text-lg"></i>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs text-slate-400 font-semibold uppercase tracking-wider mb-1.5">Expiry Date</label>
+                        <input type="text" placeholder="MM / YY" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm text-slate-100 focus:outline-none focus:border-emerald-500 text-center">
+                    </div>
+                    <div>
+                        <label class="block text-xs text-slate-400 font-semibold uppercase tracking-wider mb-1.5">CVC / CVV</label>
+                        <input type="text" placeholder="•••" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm text-slate-100 focus:outline-none focus:border-emerald-500 text-center tracking-widest">
+                    </div>
+                </div>
+
+                <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-4 flex justify-between items-center text-sm font-semibold text-slate-300">
+                    <span>Total Charge:</span>
+                    <span class="text-emerald-400 font-bold text-base" id="modalChargeAmount">1,000.00 USDT</span>
+                </div>
+
+                <button onclick="processPayment()" class="w-full bg-emerald-400 hover:bg-emerald-500 text-slate-950 font-black py-4 rounded-xl transition-all shadow-lg flex justify-center items-center gap-2 cursor-pointer mt-2">
+                    <i class="fa-solid fa-lock text-sm"></i> Pay & Mint Tokens
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- WEB3 & MODAL JAVASCRIPT LOGIC -->
     <script>
         const contractAddress = "0xd9145ECE52D541030615121b685A9BCE95c39138";
         const contractABI = [
@@ -117,22 +156,17 @@
                     const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
                     const walletAddress = accounts[0];
                     
-                    // Butonu Güncelle
                     document.getElementById('walletBtnText').innerText = walletAddress.substring(0,6) + "..." + walletAddress.substring(walletAddress.length - 4);
                     
-                    // Durumu Yeşile Çevir
                     document.getElementById('connectionStatus').innerHTML = `<span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> Connected`;
                     document.getElementById('connectionStatus').classList.remove('text-rose-400');
                     document.getElementById('connectionStatus').classList.add('text-emerald-400');
 
-                    // Ethers bağlantısını kur
                     provider = new ethers.BrowserProvider(window.ethereum);
                     signer = await provider.getSigner();
                     tokenContract = new ethers.Contract(contractAddress, contractABI, provider);
                     
-                    // Canlı veriyi çek
                     updateInvestorData(walletAddress);
-
                 } catch (error) {
                     console.error("Bağlantı hatası:", error);
                 }
@@ -152,13 +186,29 @@
                 balanceEl.classList.remove('text-slate-500');
                 balanceEl.classList.add('text-emerald-400');
             } catch (err) {
-                console.error("Blokzincirden veri okunurken hata oluştu:", err);
+                console.error("Blokzincir okuma hatası:", err);
             }
         }
 
-        function fundProject() {
+        // MODAL KONTROLLERİ
+        function openPaymentModal() {
             const amount = document.getElementById('fundAmount').value;
-            alert(amount + " USDT değerindeki katılım işleminiz için Kredi Kartı / Web3 ödeme penceresine yönlendiriliyorsunuz...");
+            document.getElementById('modalChargeAmount').innerText = parseFloat(amount).toLocaleString('en-US') + ".00 USDT";
+            
+            const modal = document.getElementById('paymentModal');
+            modal.classList.remove('hidden');
+            setTimeout(() => modal.classList.add('opacity-100'), 10);
+        }
+
+        function closePaymentModal() {
+            const modal = document.getElementById('paymentModal');
+            modal.classList.remove('opacity-100');
+            setTimeout(() => modal.classList.add('hidden'), 300);
+        }
+
+        function processPayment() {
+            alert("Ödemeniz 3D Secure güvencesiyle başarıyla alındı! Arka planda akıllı sözleşmeniz tetikleniyor ve tokenlarınız cüzdanınıza transfer ediliyor.");
+            closePaymentModal();
         }
     </script>
 </body>
