@@ -3,86 +3,156 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Robin Hood Global | Web3 Investment & Solidarity Platform</title>
+    <title>Robin Hood Global | Web3 Dashboard</title>
+    <!-- Tailwind CSS ve FontAwesome Sabitlendi -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Web3 Bağlantı Kütüphanesi -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/6.7.0/ethers.umd.min.js"></script>
 </head>
 <body class="bg-slate-900 text-slate-100 font-sans">
 
-    <nav class="flex justify-between items-center px-8 py-4 border-b border-slate-800 bg-slate-950/80 backdrop-blur fixed w-full top-0 z-50">
+    <!-- NAVİGASYON -->
+    <nav class="flex justify-between items-center px-6 py-4 border-b border-slate-800 bg-slate-950/80 backdrop-blur fixed w-full top-0 z-50">
         <div class="flex items-center gap-3">
-            <div class="bg-emerald-500 text-slate-950 p-2 rounded-lg font-black text-xl tracking-wider shadow-lg shadow-emerald-500/20">RHG</div>
-            <span class="text-xl font-bold tracking-tight bg-gradient-to-r report from-emerald-400 to-teal-200 bg-clip-text text-transparent">Robin Hood Global</span>
+            <div class="bg-emerald-500 text-slate-950 px-3 py-1.5 rounded-lg font-black text-xl tracking-wider shadow-lg shadow-emerald-500/20">RHG</div>
+            <span class="text-xl font-bold tracking-tight text-white">Robin Hood Global</span>
         </div>
         
         <div class="flex items-center gap-4">
-            <button id="connectWalletBtn" onclick="connectWallet()" class="bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-slate-950 font-bold px-5 py-2.5 rounded-xl transition-all duration-300 transform hover:scale-105 flex items-center gap-2 cursor-pointer shadow-md shadow-emerald-500/10">
+            <button id="connectWalletBtn" onclick="connectWallet()" class="bg-emerald-400 hover:bg-emerald-500 text-slate-950 font-bold px-5 py-2.5 rounded-xl transition-all duration-300 flex items-center gap-2 cursor-pointer">
                 <i class="fa-solid fa-wallet"></i>
                 <span id="walletBtnText">Connect Wallet</span>
             </button>
         </div>
     </nav>
 
-    <main class="pt-32 pb-20 px-8 max-w-6xl mx-auto text-center">
-        <div class="inline-flex items-center gap-2 bg-emerald-500/10 text-emerald-400 px-4 py-1.5 rounded-full text-sm font-semibold mb-6 border border-emerald-500/20">
-            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            The Future of Global Solidarity & Production
+    <!-- ANA İÇERİK -->
+    <main class="pt-32 pb-20 px-4 max-w-6xl mx-auto">
+        <div class="text-center mb-12">
+            <div class="inline-flex items-center gap-2 bg-emerald-500/10 text-emerald-400 px-4 py-1.5 rounded-full text-sm font-semibold mb-6 border border-emerald-500/20">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                The Future of Global Solidarity & Production
+            </div>
+            <h1 class="text-4xl md:text-5xl font-black mb-4 tracking-tight">
+                Empower Local Production, Share Global Wealth
+            </h1>
+            <p class="text-slate-400 max-w-2xl mx-auto">
+                Join the world's first decentralized ecosystem that funds manufacturing, education, and social aid through transparent smart contracts.
+            </p>
         </div>
-        
-        <h1 class="text-5xl md:text-6xl font-black mb-6 tracking-tight leading-tight">
-            Empower Local Production <br>
-            <span class="bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">Share Global Wealth</span>
-        </h1>
-        
-        <p class="text-slate-400 text-lg max-w-2xl mx-auto mb-12">
-            Join the world's first decentralized ecosystem that funds manufacturing, education, and social aid through transparent smart contracts.
-        </p>
 
-        <div class="bg-slate-950 border border-slate-800 p-8 rounded-3xl max-w-md mx-auto shadow-2xl relative overflow-hidden">
-            <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500"></div>
-            <h3 class="text-xl font-bold mb-6 text-left flex items-center gap-2">
-                <i class="fa-solid fa-circle-dollar-to-slot text-emerald-400"></i> Participate in Platform
-            </h3>
+        <!-- İKİLİ PANEL AYARI (YAN YANA GÖRÜNÜM) -->
+        <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto items-stretch">
             
-            <div class="mb-6 text-left">
-                <label class="block text-sm text-slate-400 font-medium mb-2">Amount to Fund (USD / EUR)</label>
-                <div class="relative">
-                    <input type="number" id="fundAmount" value="1000" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-lg font-bold text-slate-100 focus:outline-none focus:border-emerald-500 transition-colors">
-                    <span class="absolute right-4 top-3.5 font-bold text-slate-400">USDT</span>
+            <!-- SOL PANEL: KATILIM PANELİ -->
+            <div class="bg-slate-950 border border-slate-800 p-8 rounded-3xl shadow-2xl flex flex-col justify-between">
+                <div>
+                    <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
+                        <i class="fa-solid fa-circle-dollar-to-slot text-emerald-400"></i> Participate in Platform
+                    </h3>
+                    
+                    <div class="mb-6 text-left">
+                        <label class="block text-sm text-slate-400 font-medium mb-2">Amount to Fund (USD / EUR)</label>
+                        <div class="relative">
+                            <input type="number" id="fundAmount" value="1000" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-lg font-bold text-slate-100 focus:outline-none focus:border-emerald-500 transition-colors">
+                            <span class="absolute right-4 top-3.5 font-bold text-slate-400">USDT</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <button onclick="fundProject()" class="w-full bg-slate-100 hover:bg-white text-slate-950 font-extrabold py-4 rounded-xl transition-all active:scale-[0.98] cursor-pointer text-center tracking-wide shadow-lg mb-2">
+                        <i class="fa-solid fa-credit-card mr-2"></i> Join via Credit Card / Web3
+                    </button>
+                    <p class="text-xs text-slate-500 text-center">Safe & Encrypted Web3 Bridge Integration</p>
                 </div>
             </div>
 
-            <button onclick="fundProject()" class="w-full bg-slate-100 hover:bg-white text-slate-950 font-extrabold py-4 rounded-xl transition-all active:scale-[0.98] cursor-pointer text-center tracking-wide shadow-lg">
-                <i class="fa-solid fa-credit-card mr-2"></i> Join via Credit Card / Web3
-            </button>
-            
-            <p class="text-xs text-slate-500 mt-4">Safe & Encrypted Web3 Bridge Integration</p>
+            <!-- SAĞ PANEL: CANLI YATIRIMCI PANELİ (DASHBOARD) -->
+            <div class="bg-slate-950 border border-slate-800 p-8 rounded-3xl shadow-2xl flex flex-col justify-between">
+                <div>
+                    <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
+                        <i class="fa-solid fa-chart-pie text-cyan-400"></i> Your Share Assets
+                    </h3>
+                    
+                    <!-- Canlı Token Bakiyesi -->
+                    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 text-center mb-6">
+                        <span class="text-sm text-slate-400 block mb-1">Robin Hood Global Balance</span>
+                        <div id="tokenBalance" class="text-2xl font-black text-slate-500">
+                            Disconnected
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cüzdan Durumu -->
+                <div class="text-sm text-slate-400 bg-slate-900/50 p-4 rounded-xl border border-slate-800/80">
+                    <div class="flex justify-between items-center">
+                        <span>Status:</span>
+                        <span id="connectionStatus" class="text-rose-400 font-bold flex items-center gap-1.5">
+                            <span class="w-2 h-2 rounded-full bg-rose-500"></span> Not Connected
+                        </span>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </main>
 
+    <!-- WEB3 ENTEGRASYON KODLARI -->
     <script>
-        // Akıllı sözleşmemizin Remix'teki adresi
-        const contractAddress = "0xd9145ECE52D541030615121b685A9BCE95c39138"; // Sizin son yüklediğiniz adres
-        
+        const contractAddress = "0xd9145ECE52D541030615121b685A9BCE95c39138";
+        const contractABI = [
+            "function balanceOf(address account) external view returns (uint256)",
+            "function symbol() external view returns (string)"
+        ];
+
+        let provider;
+        let signer;
+        let tokenContract;
+
         async function connectWallet() {
             if (typeof window.ethereum !== 'undefined') {
                 try {
-                    // Kullanıcıdan cüzdanını sitemize bağlamasını istiyoruz
                     const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
                     const walletAddress = accounts[0];
                     
-                    // Buton tasarımını bağlı hesaba göre güncelliyoruz
+                    // Butonu Güncelle
                     document.getElementById('walletBtnText').innerText = walletAddress.substring(0,6) + "..." + walletAddress.substring(walletAddress.length - 4);
-                    document.getElementById('connectWalletBtn').classList.remove('from-emerald-500', 'to-teal-500');
-                    document.getElementById('connectWalletBtn').classList.add('from-slate-700', 'to-slate-800', 'text-slate-200');
                     
-                    console.log("Cüzdan Başarıyla Bağlandı: " + walletAddress);
+                    // Durumu Yeşile Çevir
+                    document.getElementById('connectionStatus').innerHTML = `<span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> Connected`;
+                    document.getElementById('connectionStatus').classList.remove('text-rose-400');
+                    document.getElementById('connectionStatus').classList.add('text-emerald-400');
+
+                    // Ethers bağlantısını kur
+                    provider = new ethers.BrowserProvider(window.ethereum);
+                    signer = await provider.getSigner();
+                    tokenContract = new ethers.Contract(contractAddress, contractABI, provider);
+                    
+                    // Canlı veriyi çek
+                    updateInvestorData(walletAddress);
+
                 } catch (error) {
-                    console.error("Kullanıcı cüzdan bağlantısını reddetti.", error);
+                    console.error("Bağlantı hatası:", error);
                 }
             } else {
-                alert("Lütfen bir Web3 cüzdanı (MetaMask gibi) kurun veya kredi kartı seçeneği ile devam edin!");
+                alert("Lütfen MetaMask veya uyumlu bir Web3 cüzdanı açın!");
+            }
+        }
+
+        async function updateInvestorData(address) {
+            try {
+                const balanceWei = await tokenContract.balanceOf(address);
+                const balanceHuman = ethers.formatEther(balanceWei);
+                const symbol = await tokenContract.symbol();
+
+                const balanceEl = document.getElementById('tokenBalance');
+                balanceEl.innerText = parseFloat(balanceHuman).toLocaleString('en-US') + " " + symbol;
+                balanceEl.classList.remove('text-slate-500');
+                balanceEl.classList.add('text-emerald-400');
+            } catch (err) {
+                console.error("Blokzincirden veri okunurken hata oluştu:", err);
             }
         }
 
