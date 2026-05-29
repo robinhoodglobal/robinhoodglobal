@@ -1,0 +1,167 @@
+HTML
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robin Hood Global</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght=300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #064e3b; /* Robin Hood Forest Green */
+            --accent: #f59e0b;  /* Gold */
+            --text-light: #f8fafc;
+            --text-dark: #1e293b;
+            --bg-light: #f8fafc;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--bg-light); color: var(--text-dark); line-height: 1.6; top: 0 !important; }
+        
+        header {
+            background-color: var(--primary);
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .logo { color: var(--text-light); font-size: 24px; font-weight: 700; text-transform: uppercase; }
+        .logo span { color: var(--accent); }
+        
+        .header-right { display: flex; align-items: center; gap: 20px; }
+        
+        /* 🌐 YENİLENEN DİL SEÇİM ALANI (DAHA BELİRGİN) */
+        .global-language-selector {
+            background: #ffffff !important;
+            padding: 5px 10px;
+            border-radius: 6px;
+            border: 2px solid var(--accent);
+            display: inline-block;
+            min-width: 140px;
+        }
+        
+        /* Google Translate'in çirkin orijinal çubuklarını temizleme */
+        .goog-te-banner-frame.skiptranslate { display: none !important; }
+        .goog-logo-link { display:none !important; }
+        .goog-te-gadget { color: transparent !important; font-size: 0px !important; }
+        .goog-te-gadget .goog-te-combo { 
+            margin: 0 !important; 
+            padding: 3px !important; 
+            border: none !important;
+            font-weight: 600 !important; 
+            background: transparent !important; 
+            color: #000000 !important;
+            font-size: 13px !important;
+            cursor: pointer;
+        }
+
+        .nav-buttons { display: flex; gap: 10px; }
+        .btn { padding: 8px 16px; font-weight: 600; border-radius: 6px; cursor: pointer; transition: 0.3s; border: none; font-size: 14px; }
+        .wallet-btn { background-color: transparent; color: var(--accent); border: 2px solid var(--accent); }
+        .wallet-btn:hover { background-color: var(--accent); color: white; }
+        .card-btn { background-color: var(--accent); color: var(--primary); }
+
+        .hero {
+            background: linear-gradient(rgba(6, 78, 59, 0.85), rgba(6, 78, 59, 0.95)), url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
+            height: 50vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--text-light);
+            padding: 0 20px;
+        }
+        .hero h1 { font-size: 38px; margin-bottom: 15px; }
+        .hero h1 span { color: var(--accent); }
+        .hero p { font-size: 16px; max-width: 700px; opacity: 0.9; }
+
+        .pools-section { padding: 50px 5%; text-align: center; }
+        .pools-section h2 { font-size: 28px; color: var(--primary); margin-bottom: 40px; }
+        
+        .pools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 25px; }
+        .pool-card { background: white; border-radius: 12px; padding: 25px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); border-top: 5px solid var(--primary); display: flex; flex-direction: column; justify-content: space-between; transition: 0.3s; text-align: left; }
+        .pool-card:hover { transform: translateY(-5px); }
+        .pool-card.charity { border-top: 5px solid #ef4444; }
+        .pool-card h3 { font-size: 18px; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+        .pool-card p { font-size: 13px; color: #64748b; margin-bottom: 20px; min-height: 60px; }
+        
+        .pool-btn { background-color: var(--primary); color: white; padding: 10px; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; width: 100%; }
+        .pool-card.charity .pool-btn { background-color: #ef4444; }
+
+        footer { background-color: var(--primary); color: #a7f3d0; text-align: center; padding: 20px; font-size: 13px; margin-top: 40px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">ROBIN HOOD <span>GLOBAL</span></div>
+        <div class="header-right">
+            
+            <!-- 🌐 DİL KUTUSUNUN KAPSAYICI ALANI -->
+            <div class="global-language-selector">
+                <div id="google_translate_element"></div>
+            </div>
+            
+            <div class="nav-buttons">
+                <button class="btn wallet-btn" onclick="connectWallet()">Connect Web3 Wallet</button>
+                <button class="btn card-btn" onclick="openCreditCard()">Credit Card</button>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>Great Opportunities, <span>Fair & Transparent</span> Sharing</h1>
+        <p>We collectively acquire massive distressed factories and properties that conglomerates lock away, spreading production and profits to the grassroots.</p>
+    </section>
+
+    <section class="pools-section">
+        <h2>Our Active Participation & Solidarity Pools</h2>
+        
+        <div class="pools-grid">
+            <div class="pool-card">
+                <h3>🏭 Robin Hood Factory</h3>
+                <p>Our main investment pool where we acquire undervalued industrial lands, distressed factories, or ready-to-produce facilities for collective profit.</p>
+                <button class="pool-btn" onclick="openCreditCard()">Join / Fund</button>
+            </div>
+            <div class="pool-card charity">
+                <h3>📚 Robin Hood Education</h3>
+                <p>A non-profit pool providing scholarships, computers, and educational infrastructure to bright young minds who need it most.</p>
+                <button class="pool-btn" onclick="openCreditCard()">Donate</button>
+            </div>
+            <div class="pool-card charity">
+                <h3>⛺ Robin Hood Disaster</h3>
+                <p>An emergency readiness fund designed to swiftly deliver tents, containers, hot meals, and vital supplies during natural disasters.</p>
+                <button class="pool-btn" onclick="openCreditCard()">Support</button>
+            </div>
+            <div class="pool-card charity">
+                <h3>🐾 Robin Hood Stray Animals</h3>
+                <p>A compassion pool dedicated to meeting the food, medical treatment, and shelter needs of stray animals through transparent blockchain power.</p>
+                <button class="pool-btn" onclick="openCreditCard()">Contribute</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Robin Hood Global Community. "Uniting the grassroots to build the future."</p>
+    </footer>
+
+    <!-- GOOGLE ENTEGRASYON KODU -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <script>
+        function connectWallet() { alert("Wallet connection infrastructure is ready."); }
+        function openCreditCard() { alert("Global credit card gateway is being initiated."); }
+    </script>
+</body>
+</html>
